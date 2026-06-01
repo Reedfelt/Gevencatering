@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geven American Catering — Bringing the American Dream to Your Event</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1E3A5F;
+    --navy-deep:#142747;
+    --red:#B22234;
+    --red-deep:#8B1A28;
+    --white:#FFFFFF;
+    --cream:#F6F1E7;
+    --gold:#D4A017;
+    --ink:#0F1A2E;
+    --muted:#9CA9BC;
+    --line:rgba(255,255,255,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Montserrat',system-ui,-apple-system,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+  h1,h2,h3,h4{font-family:'Bebas Neue',sans-serif;letter-spacing:0.02em;line-height:1}
+  .display{font-family:'Bebas Neue',sans-serif;letter-spacing:0.01em}
+  .sub{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:0.18em;font-weight:500}
+  .container{max-width:1440px;margin:0 auto;padding:0 48px}
+
+  /* NAV */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--navy-deep);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 48px;max-width:1440px;margin:0 auto}
+  .wordmark{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.06em;color:var(--white)}
+  .wordmark .accent{color:var(--red)}
+  .wordmark .star{color:var(--gold);margin:0 2px}
+  .nav-links{display:flex;gap:36px;justify-content:center}
+  .nav-links a{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    font-size:13px;
+    letter-spacing:0.16em;
+    color:rgba(255,255,255,0.85);
+    padding:8px 0;
+    position:relative;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--gold)}
+  .nav-links a.active{color:var(--white)}
+  .nav-links a.active::after{
+    content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--red);
+  }
+  .nav-cta-wrap{display:flex;justify-content:flex-end;align-items:center;gap:18px}
+  .phone-mini{color:var(--white);font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:0.1em;opacity:0.7}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:0.14em;font-weight:600;
+    padding:14px 22px;font-size:13px;
+    background:var(--red);color:var(--white);
+    border:2px solid var(--red);
+    transition:all .2s;
+  }
+  .btn:hover{background:var(--red-deep);border-color:var(--red-deep)}
+  .btn.ghost{background:transparent;color:var(--white);border-color:var(--white)}
+  .btn.ghost:hover{background:var(--white);color:var(--navy-deep)}
+  .btn.gold{background:var(--gold);border-color:var(--gold);color:var(--navy-deep)}
+  .btn.gold:hover{background:#B8870C;border-color:#B8870C;color:var(--white)}
+  .btn .arrow{display:inline-block;width:18px;height:2px;background:currentColor;position:relative}
+  .btn .arrow::after{content:"";position:absolute;right:0;top:-3px;width:8px;height:8px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg)}
+
+  /* HERO */
+  .hero{
+    background:var(--navy-deep);
+    color:var(--white);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 1fr;
+    height:88vh;min-height:600px;max-height:900px;
+  }
+  .hero-left{
+    padding:80px 64px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    position:relative;
+  }
+  .hero-stars{
+    position:absolute;top:36px;left:64px;
+    font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:0.3em;color:var(--gold);
+  }
+  .hero-stars::before{content:"★ ★ ★ ★ ★ ";margin-right:8px;color:var(--gold)}
+  .hero-title{
+    font-size:clamp(64px,7vw,112px);line-height:0.92;
+    text-transform:uppercase;
+    margin-top:60px;
+  }
+  .hero-title .row{display:block}
+  .hero-title .accent-row{color:var(--red);}
+  .hero-title .stripe{
+    display:inline-block;width:64px;height:6px;background:var(--gold);
+    vertical-align:middle;margin-right:16px;margin-bottom:14px;
+  }
+  .hero-sub{
+    font-size:18px;color:rgba(255,255,255,0.78);
+    max-width:520px;margin-top:28px;line-height:1.55;
+  }
+  .hero-actions{display:flex;gap:14px;margin-top:38px}
+  .hero-facts{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    border-top:1px solid var(--line);
+    padding-top:28px;margin-top:48px;
+  }
+  .fact .num{font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1;color:var(--gold);letter-spacing:0.02em}
+  .fact .lbl{font-family:'Oswald',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.22em;color:rgba(255,255,255,0.6);margin-top:8px}
+
+  .hero-right{
+    display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
+    gap:6px;padding:6px;background:var(--navy-deep);
+  }
+  .hero-tile{position:relative;overflow:hidden;background:#000}
+  .hero-tile img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .hero-tile:hover img{transform:scale(1.05)}
+  .hero-tile::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,0.55) 100%);
+    z-index:1;
+  }
+  .hero-tile .label{
+    position:absolute;left:18px;bottom:14px;z-index:2;
+    font-family:'Oswald',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.22em;
+    color:var(--white);
+  }
+  .hero-tile .label::before{content:"";display:inline-block;width:18px;height:1px;background:var(--gold);vertical-align:middle;margin-right:8px}
+
+  /* MARQUEE */
+  .marquee{
+    background:var(--red);color:var(--white);
+    padding:22px 0;overflow:hidden;
+    border-top:6px solid var(--gold);
+    border-bottom:6px solid var(--navy-deep);
+  }
+  .marquee-track{
+    display:flex;gap:48px;align-items:center;white-space:nowrap;
+    font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.06em;
+    animation:scroll 30s linear infinite;
+  }
+  .marquee-track span{display:inline-flex;align-items:center;gap:48px}
+  .marquee-track .dot{width:10px;height:10px;background:var(--gold);border-radius:50%;display:inline-block}
+  @keyframes scroll{
+    0%{transform:translateX(0)}
+    100%{transform:translateX(-50%)}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track{animation:none}
+  }
+
+  /* SECTION BASE */
+  .section{padding:120px 0}
+  .section-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;margin-bottom:64px}
+  .eyebrow{
+    font-family:'Oswald',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:0.3em;
+    color:var(--red);display:flex;align-items:center;gap:14px;margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";display:inline-block;width:32px;height:2px;background:var(--red)}
+  .section-title{font-size:clamp(48px,5vw,80px);line-height:0.95;text-transform:uppercase;color:var(--ink)}
+  .section-title .alt{color:var(--red)}
+  .section-lead{max-width:480px;font-size:16px;color:#5A6478;line-height:1.65}
+
+  /* CONCEPTEN GRID (4) */
+  .bg-cream{background:var(--cream)}
+  .concept-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .concept{
+    background:var(--white);
+    border:1px solid #E6DFD0;
+    overflow:hidden;
+    transition:transform .3s,box-shadow .3s;
+  }
+  .concept:hover{transform:translateY(-4px);box-shadow:0 24px 48px -20px rgba(20,39,71,0.25)}
+  .concept-img{height:200px;background:var(--navy);overflow:hidden;position:relative}
+  .concept-img img{width:100%;height:100%;object-fit:cover}
+  .concept-img .tag{
+    position:absolute;top:14px;left:14px;
+    background:var(--red);color:var(--white);
+    font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+    padding:6px 10px;
+  }
+  .concept-body{padding:24px;min-height:230px;position:relative}
+  .concept-name{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:0.02em;color:var(--ink);text-transform:uppercase;line-height:1.05;word-break:break-word;hyphens:auto}
+  .concept-desc{font-size:13px;color:#5A6478;margin-top:10px;line-height:1.55;min-height:80px}
+  .concept-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid #E6DFD0}
+  .concept-foot .meta{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--red)}
+  .concept-foot .more{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy-deep)}
+
+  /* FEATURED / SPOTLIGHT */
+  .featured{background:var(--navy-deep);color:var(--white);padding:120px 0}
+  .featured-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+  .featured-img{aspect-ratio:4/5;background:#000;overflow:hidden;position:relative}
+  .featured-img img{width:100%;height:100%;object-fit:cover}
+  .featured-img::after{
+    content:"";position:absolute;top:24px;left:24px;
+    width:120px;height:120px;
+    background:var(--gold);
+    z-index:2;display:flex;align-items:center;justify-content:center;
+    font-family:'Bebas Neue',sans-serif;color:var(--navy-deep);
+    font-size:16px;text-align:center;
+    clip-path:polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+  }
+  .featured-badge{
+    position:absolute;top:24px;left:24px;z-index:3;
+    width:120px;height:120px;display:flex;align-items:center;justify-content:center;
+    font-family:'Bebas Neue',sans-serif;color:var(--navy-deep);
+    font-size:14px;line-height:1.1;text-align:center;letter-spacing:0.05em;
+  }
+  .featured-content .eyebrow{color:var(--gold)}
+  .featured-content .eyebrow::before{background:var(--gold)}
+  .featured-title{font-size:clamp(48px,4.5vw,72px);line-height:0.95;text-transform:uppercase;margin-bottom:24px}
+  .featured-lead{font-size:17px;color:rgba(255,255,255,0.78);line-height:1.65;max-width:520px;margin-bottom:36px}
+  .featured-points{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px}
+  .fp{border-top:2px solid var(--gold);padding-top:14px}
+  .fp .num{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold);line-height:1}
+  .fp .lbl{font-family:'Oswald',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:rgba(255,255,255,0.7);margin-top:6px}
+
+  /* WAAROM (8 col but with 5 items + extra image) */
+  .why{padding:120px 0;background:var(--white)}
+  .why-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:16px}
+  .why-card{
+    grid-column:span 2;
+    border:1px solid #E5E8EE;
+    padding:32px 24px;
+    display:flex;flex-direction:column;
+    transition:all .3s;
+    background:var(--white);
+  }
+  .why-card:hover{background:var(--navy-deep);color:var(--white);transform:translateY(-3px)}
+  .why-card:hover .why-num{color:var(--gold)}
+  .why-card:hover .why-name{color:var(--white)}
+  .why-card:hover .why-desc{color:rgba(255,255,255,0.75)}
+  .why-num{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--red);line-height:1;transition:color .3s}
+  .why-name{font-family:'Bebas Neue',sans-serif;font-size:24px;text-transform:uppercase;letter-spacing:0.02em;color:var(--ink);margin-top:24px;line-height:1.1;transition:color .3s}
+  .why-desc{font-size:13px;color:#5A6478;margin-top:12px;line-height:1.6;flex:1;transition:color .3s}
+  .why-img-card{
+    grid-column:span 2;grid-row:span 1;
+    overflow:hidden;background:var(--red);
+    display:flex;align-items:end;justify-content:start;
+    padding:24px;color:var(--white);position:relative;
+    aspect-ratio:auto;
+  }
+  .why-img-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.55}
+  .why-img-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(178,34,52,0.2),rgba(178,34,52,0.85));z-index:1}
+  .why-img-card .why-label{position:relative;z-index:2;font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.04em;text-transform:uppercase;line-height:1.05}
+
+  /* INFO BAR */
+  .info-bar{background:var(--navy-deep);color:var(--white);padding:80px 0}
+  .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line)}
+  .info-cell{padding:48px;border-right:1px solid var(--line)}
+  .info-cell:last-child{border-right:none}
+  .info-cell .eyebrow{color:var(--gold)}
+  .info-cell .eyebrow::before{background:var(--gold)}
+  .info-cell .title{font-family:'Bebas Neue',sans-serif;font-size:32px;text-transform:uppercase;letter-spacing:0.02em;margin-bottom:14px;line-height:1.05}
+  .info-cell .body{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.7;margin-bottom:22px}
+  .info-cell .body strong{color:var(--white);font-weight:600}
+  .info-cell .link{font-family:'Oswald',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:0.2em;color:var(--gold);border-bottom:2px solid var(--gold);padding-bottom:4px}
+
+  /* IMPRESSIE / EVENT TYPES */
+  .events{background:var(--ink);color:var(--white);padding:120px 0;position:relative;overflow:hidden}
+  .events .section-title{color:var(--white)}
+  .events .section-lead{color:rgba(255,255,255,0.7)}
+  .events-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .event-tile{
+    background:var(--ink);padding:36px 28px 32px;
+    position:relative;overflow:hidden;
+    aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;
+    transition:background .3s;
+  }
+  .event-tile:hover{background:var(--red)}
+  .event-tile .ghost{
+    position:absolute;font-family:'Bebas Neue',sans-serif;font-size:140px;
+    color:rgba(255,255,255,0.04);right:-10px;bottom:-40px;line-height:1;pointer-events:none;
+  }
+  .event-tile:hover .ghost{color:rgba(255,255,255,0.18)}
+  .event-tile .num{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:0.22em;color:var(--gold)}
+  .event-tile .name{font-family:'Bebas Neue',sans-serif;font-size:34px;text-transform:uppercase;letter-spacing:0.02em;line-height:1.05;margin-top:auto}
+  .event-tile .count{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:10px}
+
+  /* REVIEWS */
+  .reviews{background:var(--cream);padding:120px 0;position:relative}
+  .reviews .section-head{align-items:start}
+  .reviews-score{
+    text-align:right;
+  }
+  .stars{color:var(--gold);font-size:24px;letter-spacing:6px;margin-bottom:6px;line-height:1}
+  .score-num{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:1;color:var(--ink)}
+  .score-lbl{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#5A6478;margin-top:4px}
+  .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .review{padding:36px;border:1px solid #E6DFD0;background:var(--white)}
+  .review .stars{margin-bottom:18px;font-size:18px;letter-spacing:4px}
+  .review blockquote{font-family:'Montserrat',sans-serif;font-size:16px;line-height:1.65;color:var(--ink);font-style:italic;margin-bottom:24px}
+  .review-author{display:flex;align-items:center;gap:14px;padding-top:18px;border-top:1px solid #E6DFD0}
+  .review-author .avatar{width:42px;height:42px;background:var(--red);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:18px}
+  .review-author .name{font-family:'Oswald',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink)}
+  .review-author .role{font-size:12px;color:#5A6478;margin-top:2px}
+
+  /* HOOFD CTA */
+  .main-cta{background:var(--gold);color:var(--navy-deep);padding:90px 0}
+  .main-cta-grid{display:grid;grid-template-columns:1.5fr auto;align-items:center;gap:48px}
+  .main-cta-title{font-size:clamp(48px,5vw,80px);line-height:0.95;text-transform:uppercase}
+  .main-cta-sub{font-family:'Oswald',sans-serif;font-size:14px;letter-spacing:0.18em;text-transform:uppercase;margin-top:14px;color:var(--navy-deep);opacity:0.8}
+  .main-cta .btn{background:var(--navy-deep);color:var(--white);border-color:var(--navy-deep);padding:20px 32px;font-size:14px}
+  .main-cta .btn:hover{background:var(--ink);border-color:var(--ink)}
+  .main-cta .phone{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--navy-deep);margin-top:14px;text-align:right;opacity:0.8}
+
+  /* FAQ */
+  .faq{background:var(--white);padding:120px 0}
+  .faq-grid{display:grid;grid-template-columns:0.7fr 1.3fr;gap:80px;align-items:start}
+  .faq-side{background:var(--navy-deep);color:var(--white);padding:48px}
+  .faq-side .eyebrow{color:var(--gold)}
+  .faq-side .eyebrow::before{background:var(--gold)}
+  .faq-side .title{font-family:'Bebas Neue',sans-serif;font-size:48px;text-transform:uppercase;line-height:0.95;margin-bottom:18px}
+  .faq-side .body{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.7;margin-bottom:24px}
+  .faq-list{display:flex;flex-direction:column}
+  .faq-item{border-bottom:1px solid #E5E8EE;padding:24px 0}
+  .faq-item:first-child{padding-top:0}
+  .faq-q{font-family:'Bebas Neue',sans-serif;font-size:24px;text-transform:uppercase;letter-spacing:0.02em;color:var(--ink);display:flex;justify-content:space-between;align-items:center;line-height:1.1}
+  .faq-q .icon{color:var(--red);font-family:'Bebas Neue',sans-serif;font-size:28px;line-height:1}
+  .faq-a{font-size:14px;color:#5A6478;line-height:1.7;margin-top:10px;max-width:680px}
+
+  /* FOOTER */
+  .footer{background:var(--ink);color:var(--white);padding:80px 0 32px;border-top:6px solid var(--gold)}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+  .footer-brand .wordmark{font-size:36px}
+  .footer-brand .desc{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.7;margin-top:16px;max-width:340px}
+  .footer-social{display:flex;gap:10px;margin-top:24px}
+  .footer-social a{
+    width:40px;height:40px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+    color:rgba(255,255,255,0.7);font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:0.1em;
+    transition:all .2s;
+  }
+  .footer-social a:hover{background:var(--red);border-color:var(--red);color:var(--white)}
+  .footer-col h4{font-family:'Oswald',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:0.22em;color:var(--gold);margin-bottom:20px;font-weight:500}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .footer-col a{font-size:14px;color:rgba(255,255,255,0.75)}
+  .footer-col a:hover{color:var(--white)}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid var(--line);font-size:12px;color:rgba(255,255,255,0.5);font-family:'Oswald',sans-serif;letter-spacing:0.16em;text-transform:uppercase}
+
+  /* Responsive */
+  @media (max-width:1024px){
+    .container,.nav-inner{padding:0 28px}
+    .hero-grid{grid-template-columns:1fr;height:auto;max-height:none}
+    .hero-left{padding:48px 28px}
+    .hero-right{height:520px}
+    .concept-grid{grid-template-columns:repeat(2,1fr)}
+    .why-grid{grid-template-columns:repeat(4,1fr)}
+    .why-card,.why-img-card{grid-column:span 2}
+    .info-grid{grid-template-columns:1fr}
+    .info-cell{border-right:none;border-bottom:1px solid var(--line)}
+    .info-cell:last-child{border-bottom:none}
+    .events-grid{grid-template-columns:repeat(2,1fr)}
+    .review-grid{grid-template-columns:1fr}
+    .featured-grid{grid-template-columns:1fr;gap:32px}
+    .faq-grid{grid-template-columns:1fr;gap:32px}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+    .main-cta-grid{grid-template-columns:1fr;text-align:left}
+    .main-cta .phone{text-align:left}
+  }
+  @media (max-width:640px){
+    .nav-inner{grid-template-columns:auto auto;gap:12px}
+    .nav-links{display:none}
+    .phone-mini{display:none}
+    .section{padding:72px 0}
+    .section-head{grid-template-columns:1fr;gap:24px}
+    .concept-grid,.why-grid{grid-template-columns:1fr}
+    .why-card,.why-img-card{grid-column:span 1}
+    .events-grid{grid-template-columns:1fr}
+    .hero-title{font-size:56px}
+    .hero-actions{flex-direction:column;align-items:flex-start}
+    .btn{padding:14px 20px;font-size:12px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="wordmark"><span class="accent">GEVEN</span><span class="star">★</span>AMERICAN CATERING</a>
+    <div class="nav-links">
+      <a href="#home" class="active">Home</a>
+      <a href="#catering">Catering</a>
+      <a href="#concepten">Concepten</a>
+      <a href="#impressie">Impressie</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta-wrap">
+      <span class="phone-mini">06 24 18 09 55</span>
+      <a href="#offerte" class="btn">Offerte aanvragen <span class="arrow"></span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-stars">Authentic American street food · Since the fairground era</div>
+      <div>
+        <h1 class="hero-title">
+          <span class="row">Bringing</span>
+          <span class="row"><span class="stripe"></span>The American</span>
+          <span class="row accent-row">Dream</span>
+          <span class="row">To Your Event</span>
+        </h1>
+        <p class="hero-sub">Van sappige burgers tot knapperige loaded fries en complete cateringconcepten. Wij zorgen voor smaak, beleving en een professionele uitstraling op ieder evenement.</p>
+        <div class="hero-actions">
+          <a href="#offerte" class="btn">Vraag een offerte aan <span class="arrow"></span></a>
+          <a href="#concepten" class="btn ghost">Bekijk onze concepten</a>
+        </div>
+      </div>
+      <div class="hero-facts">
+        <div class="fact"><div class="num">100+</div><div class="lbl">Events per jaar</div></div>
+        <div class="fact"><div class="num">15+</div><div class="lbl">Jaar ervaring</div></div>
+        <div class="fact"><div class="num">100%</div><div class="lbl">Dagvers bereid</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-tile"><img src="image0-3.jpeg" alt="Geven American Catering stand op kermis"><span class="label">Carnaval · Nijmegen</span></div>
+      <div class="hero-tile"><img src="image7.jpeg" alt="Foodtruck met Amerikaanse vlaggen"><span class="label">Festival setup</span></div>
+      <div class="hero-tile"><img src="image3.jpeg" alt="Burgers Fries Snacks stand"><span class="label">Burgers · Fries</span></div>
+      <div class="hero-tile"><img src="image4.jpeg" alt="Eventcatering met bezoekers"><span class="label">Live cooking</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Burgers <span class="dot"></span> Loaded Fries <span class="dot"></span> Hot Dogs <span class="dot"></span> Streetfood <span class="dot"></span> Evenementen <span class="dot"></span> Festivals <span class="dot"></span> American Vibes <span class="dot"></span></span>
+    <span>Burgers <span class="dot"></span> Loaded Fries <span class="dot"></span> Hot Dogs <span class="dot"></span> Streetfood <span class="dot"></span> Evenementen <span class="dot"></span> Festivals <span class="dot"></span> American Vibes <span class="dot"></span></span>
+  </div>
+</div>
+
+<!-- CONCEPTEN -->
+<section class="section bg-cream" id="concepten">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Onze concepten</div>
+        <h2 class="section-title">Vier <span class="alt">smaakvolle</span> manieren<br>om jouw event te laten knallen</h2>
+      </div>
+      <p class="section-lead">Van klassieke burgers tot complete foodtruck-arrangementen. Wij vertalen jouw evenement naar een concept dat past bij je publiek, locatie en budget.</p>
+    </div>
+    <div class="concept-grid">
+      <article class="concept">
+        <div class="concept-img"><span class="tag">Bestseller</span><img src="image3.jpeg" alt="American burgers"></div>
+        <div class="concept-body">
+          <h3 class="concept-name">American Burgers</h3>
+          <p class="concept-desc">Vers gegrilde premium burgers met de authentieke smaak van Amerika. 100% rundvlees, dagvers brood.</p>
+          <div class="concept-foot"><span class="meta">Vanaf 7,50</span><span class="more">Bekijk →</span></div>
+        </div>
+      </article>
+      <article class="concept">
+        <div class="concept-img"><span class="tag">Favoriet</span><img src="image5.jpeg" alt="Loaded fries"></div>
+        <div class="concept-body">
+          <h3 class="concept-name">Loaded Fries</h3>
+          <p class="concept-desc">Knapperige friet uit eigen friteuse met diverse toppings, sauzen en vleesgarnituren. Vers gebakken.</p>
+          <div class="concept-foot"><span class="meta">Vanaf 5,00</span><span class="more">Bekijk →</span></div>
+        </div>
+      </article>
+      <article class="concept">
+        <div class="concept-img"><span class="tag">Zakelijk</span><img src="image2.jpeg" alt="Zakelijke catering"></div>
+        <div class="concept-body">
+          <h3 class="concept-name">Zakelijke Catering</h3>
+          <p class="concept-desc">Volledig verzorgde catering voor bedrijfsfeesten, open dagen en personeelsevenementen. Op maat geleverd.</p>
+          <div class="concept-foot"><span class="meta">Op aanvraag</span><span class="more">Bekijk →</span></div>
+        </div>
+      </article>
+      <article class="concept">
+        <div class="concept-img"><span class="tag">XL</span><img src="image7.jpeg" alt="Evenementencatering"></div>
+        <div class="concept-body">
+          <h3 class="concept-name">Evenementencatering</h3>
+          <p class="concept-desc">Flexibele foodconcepten voor kermissen, festivals, markten en grote publieksevenementen. Heel Nederland.</p>
+          <div class="concept-foot"><span class="meta">Maatwerk</span><span class="more">Bekijk →</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED / SPOTLIGHT -->
+<section class="featured" id="spotlight">
+  <div class="container">
+    <div class="featured-grid">
+      <div class="featured-img">
+        <img src="image5.jpeg" alt="Vers gebakken in eigen keuken">
+        <div class="featured-badge">Vers<br>Gebakken<br>Dagelijks</div>
+      </div>
+      <div class="featured-content">
+        <div class="eyebrow">In de spotlight</div>
+        <h2 class="featured-title">Vers Gebakken,<br>Live Bereid,<br>Altijd Premium</h2>
+        <p class="featured-lead">Alles bij Geven wordt ter plekke bereid. Geen voorverpakte producten, geen shortcuts. Onze keuken voldoet aan alle HACCP-normen en draait op verse ingrediënten, dagelijks vers ingekocht.</p>
+        <div class="featured-points">
+          <div class="fp"><div class="num">100%</div><div class="lbl">Verse ingrediënten</div></div>
+          <div class="fp"><div class="num">HACCP</div><div class="lbl">Gecertificeerd</div></div>
+          <div class="fp"><div class="num">Live</div><div class="lbl">Bereid op locatie</div></div>
+          <div class="fp"><div class="num">24/7</div><div class="lbl">Bereikbaar voor planning</div></div>
+        </div>
+        <a href="#offerte" class="btn gold">Plan een kennismaking <span class="arrow"></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAAROM KIEZEN -->
+<section class="why" id="waarom">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Waarom Geven</div>
+        <h2 class="section-title">Vijf redenen waarom<br>organisatoren <span class="alt">terug</span> komen</h2>
+      </div>
+      <p class="section-lead">Wij zijn een betrouwbare partner voor evenementenbureaus, gemeenten en bedrijven. Korte lijnen, persoonlijk contact en geen verrassingen.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <h3 class="why-name">Altijd schoon en verzorgd</h3>
+        <p class="why-desc">Onze foodtrucks en standplaatsen worden netjes en professioneel onderhouden. Niets dat afdoet aan jouw uitstraling.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <h3 class="why-name">Flexibel inzetbaar</h3>
+        <p class="why-desc">Van kleinschalige bedrijfsfeesten tot grote festivals met duizenden bezoekers. Wij schalen mee.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <h3 class="why-name">Persoonlijke aanpak</h3>
+        <p class="why-desc">Direct contact met Johan. Geen accountmanagers, geen tussenlagen. Eén aanspreekpunt van offerte tot afbouw.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <h3 class="why-name">Klantgericht meedenken</h3>
+        <p class="why-desc">We adviseren over portionering, doorstroom en menu-aanbod op basis van jouw bezoekersaantal.</p>
+      </div>
+      <div class="why-card why-img-card">
+        <img src="image6.jpeg" alt="Street Bites Premium Quality">
+        <span class="why-label">Premium<br>Streetfood<br>Quality</span>
+      </div>
+      <div class="why-card">
+        <div class="why-num">05</div>
+        <h3 class="why-name">Dagvers bereid</h3>
+        <p class="why-desc">Kwaliteit staat altijd centraal. Verse ingrediënten, vers gebakken op locatie, geen compromissen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO BAR -->
+<section class="info-bar">
+  <div class="container">
+    <div class="info-grid">
+      <div class="info-cell">
+        <div class="eyebrow">Openingstijden</div>
+        <div class="title">Bereikbaar wanneer<br>jij ons nodig hebt</div>
+        <p class="body"><strong>Maandag t/m vrijdag</strong><br>09:00 — 18:00<br><br><strong>Weekend</strong><br>Op afspraak en tijdens evenementen</p>
+        <a href="#contact" class="link">Plan een gesprek</a>
+      </div>
+      <div class="info-cell">
+        <div class="eyebrow">Contact</div>
+        <div class="title">Direct contact<br>met Johan</div>
+        <p class="body"><strong>Geven American Catering</strong><br>Plein 1944<br>6511 JC Nijmegen<br><br><strong>06 24 18 09 55</strong></p>
+        <a href="mailto:info@gevencatering.nl" class="link">Stuur een e-mail</a>
+      </div>
+      <div class="info-cell">
+        <div class="eyebrow">Voor organisatoren</div>
+        <div class="title">Standplaats nodig<br>voor jouw event?</div>
+        <p class="body">Wij verzorgen volledig ingerichte standplaatsen voor kermissen, festivals, markten en braderieën in heel Nederland. Inclusief vergunningen, opbouw en afbouw.</p>
+        <a href="#offerte" class="link">Vraag voorwaarden op</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS / IMPRESSIE -->
+<section class="events" id="impressie">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" style="color:var(--gold)"><span style="background:var(--gold)"></span>Waar je ons vindt</div>
+        <h2 class="section-title">Van kermis tot<br><span class="alt">bedrijfsfeest</span></h2>
+      </div>
+      <p class="section-lead">Wij staan door heel Nederland op meer dan 100 events per jaar. Hieronder een greep uit de locatietypen waar je ons kunt boeken.</p>
+    </div>
+    <div class="events-grid">
+      <div class="event-tile"><span class="ghost">01</span><span class="num">01</span><span class="name">Kermissen</span><span class="count">40+ per jaar</span></div>
+      <div class="event-tile"><span class="ghost">02</span><span class="num">02</span><span class="name">Festivals</span><span class="count">15+ per jaar</span></div>
+      <div class="event-tile"><span class="ghost">03</span><span class="num">03</span><span class="name">Bedrijfsfeesten</span><span class="count">25+ per jaar</span></div>
+      <div class="event-tile"><span class="ghost">04</span><span class="num">04</span><span class="name">Markten</span><span class="count">20+ per jaar</span></div>
+      <div class="event-tile"><span class="ghost">05</span><span class="num">05</span><span class="name">Braderieën</span><span class="count">Door heel NL</span></div>
+      <div class="event-tile"><span class="ghost">06</span><span class="num">06</span><span class="name">Gemeentes</span><span class="count">Op aanvraag</span></div>
+      <div class="event-tile"><span class="ghost">07</span><span class="num">07</span><span class="name">Verenigingen</span><span class="count">Maatwerk</span></div>
+      <div class="event-tile"><span class="ghost">08</span><span class="num">08</span><span class="name">Open dagen</span><span class="count">Full service</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Wat klanten zeggen</div>
+        <h2 class="section-title">Bezoekers komen<br>terug. <span class="alt">Organisatoren</span> ook.</h2>
+      </div>
+      <div class="reviews-score">
+        <div class="stars">★★★★★</div>
+        <div class="score-num">4.9 / 5</div>
+        <div class="score-lbl">Over 100+ evenementen</div>
+      </div>
+    </div>
+    <div class="review-grid">
+      <article class="review">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Johan en zijn team waren een aanwinst voor onze kermis. Strakke organisatie, lekkere kwaliteit en bezoekers waren laaiend enthousiast over de loaded fries."</blockquote>
+        <div class="review-author">
+          <div class="avatar">M</div>
+          <div><div class="name">Marc de Wit</div><div class="role">Evenementenbureau Oost</div></div>
+        </div>
+      </article>
+      <article class="review">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Persoonlijk contact, alles netjes geregeld, en op het evenement zelf liep alles op rolletjes. Onze medewerkers hadden het er nog wekenlang over."</blockquote>
+        <div class="review-author">
+          <div class="avatar">S</div>
+          <div><div class="name">Sandra van Beek</div><div class="role">HR-manager, regionaal bedrijf</div></div>
+        </div>
+      </article>
+      <article class="review">
+        <div class="stars">★★★★★</div>
+        <blockquote>"De Amerikaanse uitstraling van de stand trok meteen publiek. Echte showstopper op het festivalterrein. Komen ze volgend jaar weer? Zeker weten."</blockquote>
+        <div class="review-author">
+          <div class="avatar">R</div>
+          <div><div class="name">Rik Janssen</div><div class="role">Festivalorganisator</div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOOFD CTA -->
+<section class="main-cta" id="offerte">
+  <div class="container">
+    <div class="main-cta-grid">
+      <div>
+        <h2 class="main-cta-title">Klaar om jouw<br>event te laten knallen?</h2>
+        <p class="main-cta-sub">Vraag binnen 1 minuut een vrijblijvende offerte aan</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <a href="#contact" class="btn">Offerte aanvragen <span class="arrow"></span></a>
+        <span class="phone">of bel direct: 06 24 18 09 55</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <aside class="faq-side">
+        <div class="eyebrow">Veelgestelde vragen</div>
+        <h2 class="title">Goed om<br>te weten</h2>
+        <p class="body">Een korte selectie van vragen die wij vaak krijgen van organisatoren. Staat jouw vraag er niet bij? Bel of mail Johan direct.</p>
+        <a href="#contact" class="btn ghost">Stel jouw vraag</a>
+      </aside>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Hoe ver van tevoren moet ik boeken?<span class="icon">+</span></div>
+          <p class="faq-a">Voor reguliere events adviseren wij 4 tot 8 weken vooruit. Voor grote festivals en kermissen is een paar maanden gebruikelijk. Last-minute aanvragen kunnen we vaak ook nog inplannen.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Wat zit er in een offerte?<span class="icon">+</span></div>
+          <p class="faq-a">Een complete prijsopgave per concept, inclusief opbouw, afbouw, personeel en verbruik. Geen verborgen kosten en alles op één pagina overzichtelijk.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Werken jullie in heel Nederland?<span class="icon">+</span></div>
+          <p class="faq-a">Ja. Wij staan van Groningen tot Maastricht. Reiskosten worden vooraf transparant doorberekend en zijn afhankelijk van de locatie.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Zijn jullie HACCP-gecertificeerd?<span class="icon">+</span></div>
+          <p class="faq-a">Ja, wij voldoen aan alle voedselveiligheidsnormen en kunnen alle benodigde documenten en certificaten op aanvraag overleggen.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Kunnen jullie ook vegetarisch / veganistisch?<span class="icon">+</span></div>
+          <p class="faq-a">Zeker. Naast onze klassieke American Burgers serveren wij ook vegetarische en veganistische varianten, plantaardige loaded fries en snackopties.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="wordmark"><span class="accent" style="color:var(--red)">GEVEN</span><span class="star" style="color:var(--gold)">★</span>AMERICAN CATERING</div>
+        <p class="desc">Authentieke Amerikaanse smaak, vers bereid en perfect verzorgd voor ieder evenement. Vanuit Nijmegen, voor heel Nederland.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="LinkedIn">IN</a>
+          <a href="#" aria-label="TikTok">TT</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Diensten</h4>
+        <ul>
+          <li><a href="#">Zakelijke catering</a></li>
+          <li><a href="#">Evenementencatering</a></li>
+          <li><a href="#">Foodtruck huur</a></li>
+          <li><a href="#">Markten & braderieën</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Concepten</h4>
+        <ul>
+          <li><a href="#">American Burgers</a></li>
+          <li><a href="#">Loaded Fries</a></li>
+          <li><a href="#">Hot Dogs & Snacks</a></li>
+          <li><a href="#">Specials</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">Plein 1944, Nijmegen</a></li>
+          <li><a href="tel:0624180955">06 24 18 09 55</a></li>
+          <li><a href="mailto:info@gevencatering.nl">info@gevencatering.nl</a></li>
+          <li><a href="#">Offerte aanvragen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Geven American Catering · KvK 12345678</span>
+      <span>Bringing the American Dream to your event</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
